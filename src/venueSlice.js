@@ -3,14 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const venueSlice = createSlice({
   name: "venue",
-  initialState: [
+  initialState: [ 
     {
       img: "https://pixabay.com/images/download/chairs-2181916_640.jpg",
       name: "Conference Room (Capacity:15)",
       cost: 3500,
       quantity: 0,
-    },
-    {
+    }, 
+    {  
       img: "https://pixabay.com/images/download/event-venue-1597531_640.jpg",
       name: "Auditorium Hall (Capacity:200)",
       cost: 5500,
@@ -39,17 +39,17 @@ export const venueSlice = createSlice({
   reducers: {
    
     incrementQuantity: (state, action) => {
-      const { payload: index } = action;
-      if (state[index]) {
-        if (state[index].name === " Auditorium Hall (Capacity:200)" && state[index].quantity >= 3) {
+      const index = state[action.payload];
+      if (index) {
+        if (index.name === " Auditorium Hall (Capacity:200)" && state[index].quantity >= 3) {
           return;        }
-        state[index].quantity++;
+       index.quantity++;
       }
     },
     decrementQuantity: (state, action) => {
-      const { payload: index } = action;
-      if (state[index] && state[index].quantity > 0) {
-        state[index].quantity--;
+      const index = state[action.payload];
+      if (index && index.quantity > 0) {
+        index.quantity--;
       }
     },
   },
